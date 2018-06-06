@@ -19,6 +19,7 @@ from CYP_solution import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('order/',include('order.urls')),
+    path('auth/',include('authentication.urls')),
     path('', include('main.urls')),
 
 ]
