@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'user',
     'order',
     'quality_data',
-    # 'auth',
+    'authentication',
     'main',
     
 ]
