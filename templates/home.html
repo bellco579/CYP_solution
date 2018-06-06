@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    
+	<div class="conteiner">
+		<div class="row">
+			<h5>must be interest</h5>
+			{% for 	goods in Last10Goods %}
+					<div class="col">
+						<a href="{% url 'Goodspage' goods.id %}">
+							{{goods}}							
+						</a>
+
+					</div>
+			{% endfor %}	
+
+		</div>
+	</div>
+
+{% endblock  %}

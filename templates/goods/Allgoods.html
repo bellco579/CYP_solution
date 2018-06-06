@@ -1,0 +1,14 @@
+{% extends "basse.html" %}
+{% block content %}
+    
+	{% for goods in Goods %}
+
+		<div>
+			<a href="{% url 'Goodspage' goods.id %}">{{goods.name}}</a>
+			
+		</div>
+
+	{%endfor%}
+
+{% endblock content %}
+

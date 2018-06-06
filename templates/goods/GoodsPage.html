@@ -1,0 +1,74 @@
+{% extends "basse.html" %}
+{% load static %}
+{% block titles %}
+{{Goods_item.name}}
+{% endblock titles %}
+{% block content %}
+
+
+<div class="content">
+	<div class="row">
+		<h2>{{Goods_item.name}}</h2>	
+		<p>{{Goods_item.category.name}}</p>
+		{% if Goods_item.category.name == 'smartphone' %}
+			{{Goods_item.characteristic}}
+		{% endif %}
+	</div>
+	<div class="row">
+		<div class="col">
+			{% for img in Goods_item.gimage_set.all %}
+				<img src=" /media/{{img}} " alt="">
+				<img src="" alt="">
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+<p>{{Goods_item.description}}</p>
+<p>{{Goods_item.price}}</p>
+
+<form action="{% url 'add_to_basket' %}" id = "form_by_product">{% csrf_token %}
+	<input type="number" id = "number">
+	<button type="submit" id = "submit_btn"
+	data-product_id = "{{Goods_item.id}}"
+	data-product_name = "{{Goods_item.name}}"
+	>
+	buy
+</button>
+</form>
+
+<h4>bad Form</h4>
+<form method="POST" class="post-form">{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit" class="save btn btn-default">Save</button>
+</form>
+
+<div>
+	
+	{% for fb in Last10FB %}
+
+	<p>{{fb.rating}}</p>
+	<p>{{fb.text}}</p>
+
+	{% endfor %}
+
+</div>
+<!--
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner" role="listbox">
+		{% for img in Goods_item.gimage_set.all %}
+		<div class="carousel-item active">
+			<img class="d-block img-fluid" src="/media/img" alt="First slide">
+		</div>
+		{% endfor %}
+	<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>
+-->
+{% endblock content %}
