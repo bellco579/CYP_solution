@@ -1,6 +1,6 @@
 from django.db import models
 from quality_data.models import category
-from user.models import client
+from user.models import client,worker
 # Create your models here.
 class order(models.Model):
 	client = models.ForeignKey(client, on_delete=True)
