@@ -39,13 +39,11 @@ def create_user_profile_subProfile(sender, instance, created, **kwargs):
     if created:
         worker.objects.create(profile=instance)
         client.objects.create(profile=instance)
-
+        
 @receiver(post_save, sender=Profile)
 def save_user_profile_subProfile(sender, instance, **kwargs):
     instance.worker.save()
     instance.client.save()
-
-
 
 class user_action(object):
 	"""docstring for user_manipulation"""

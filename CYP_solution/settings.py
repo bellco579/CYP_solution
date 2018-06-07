@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'quality_data',
     'authentication',
     'main',
+    'competition_system',
     
 ]
 

@@ -8,4 +8,20 @@ class category(models.Model):
 		verbose_name_plural = "category"
 	def __str__(self):
 		return '%s' % (self.name)
+
+class tyme_type(models.Model):
+	name = models.CharField(max_length=50)
+    class Meta:
+        verbose_name = "tyme_type"
+        verbose_name_plural = "tyme_types"
+    def __str__(self):
+        return '%s' % (self.name)
+
+class cost_type(models.Model):
+	name = models.CharField( max_length=50)
+    class Meta:
+        verbose_name = "cost_type"
+        verbose_name_plural = "cost_types"
+    def __str__(self):
+        return '%s' % (self.name)
     
