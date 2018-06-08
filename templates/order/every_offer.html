@@ -1,0 +1,4 @@
+{% extends "base.html" %}
+{% for offer in every_offer %}
+	<a href="{% url 'offer_pp' offer %}">{{offer.name"}}</a>
+{% endfor %}

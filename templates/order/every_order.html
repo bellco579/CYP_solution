@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+{% for order in every_order %}
+	<a href="{% url 'order_pp' order.id %}">{{order.name}}</a>
+{% endfor %}    
+{% endblock content %}
