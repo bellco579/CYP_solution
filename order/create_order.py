@@ -5,7 +5,7 @@ class create_order_class(object):
 	def __init__(self, request):
 		super(create_order_class, self).__init__()
 		self.request = request
-
+		
 	def save_form(self,profile):
 		new_order = order.objects.create(client = profile)
 		form = order_form(self.request.POST,instance = new_order)

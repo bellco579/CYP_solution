@@ -9,19 +9,22 @@ class category(models.Model):
 	def __str__(self):
 		return '%s' % (self.name)
 
-class tyme_type(models.Model):
-	name = models.CharField(max_length=50)
+class time_type(models.Model):
+    name = models.CharField(max_length=50)
     class Meta:
-        verbose_name = "tyme_type"
-        verbose_name_plural = "tyme_types"
+        verbose_name = "time_type"
+        verbose_name_plural = "time_types"
+
     def __str__(self):
         return '%s' % (self.name)
 
+
 class cost_type(models.Model):
-	name = models.CharField( max_length=50)
+    name = models.CharField(max_length=50)
     class Meta:
         verbose_name = "cost_type"
         verbose_name_plural = "cost_types"
+
     def __str__(self):
         return '%s' % (self.name)
     
