@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import worker
+from .models import offer
 
 # Create the form class.
 class offer_form(ModelForm):
