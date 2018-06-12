@@ -1,5 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
 <a href="{% url 'show_offer' order_item.id %}">show_offer</a>   
-<a href="{% url 'create_offer' order_item %}">offer yourself servise</a> 
+<a href="{% url 'create_offer' order_item.id %}">offer yourself servise</a> 
 {% endblock content %}

@@ -56,23 +56,23 @@ class user_action(object):
 	def get_username(self):
 		if auth.get_user(self.request).username:
 			return self.request.user	
-		else:
-			return None	
 	
 	def get_profile(self):
-		if self.get_username():
-			return Profile.objects.get(id = self.get_username().id)
+		try:
+			return self.get_username().profile
+		except AttributeError as a:
+			print(a)
 
 	def get_clientProfile(self):
+		return self.get_profile().client
 		try:
 			return self.get_profile().client
 		except AttributeError:
-					# create new profile
 			return None
 
 	def get_workProfile(self):
 		try:
-			return self.get_profile().worker()
+			return self.get_profile().worker
 		except AttributeError:
 			return None
 

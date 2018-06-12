@@ -11,11 +11,15 @@ def new_order(request):
 	profile = user_action(request).get_clientProfile()
 	if request.POST:
 		if profile != None:
+			print(profile)
 			form = coc.save_form(profile)
-			if form == True:
-				return redirect('/')
-			else:
-				error = 'your form is not valid'
+			# if form == True:
+			return redirect('/')
+			# else:
+			# 	form = coc.save_form(profile)
+			# 	error = 'your form is not valid'
+		else:
+			error = "you don't login"
 	else:
 		form = order_form()
 	return render(request,'order/create_order.html', locals())
