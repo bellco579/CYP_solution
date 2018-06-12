@@ -47,11 +47,13 @@ def save_user_profile_subProfile(sender, instance, **kwargs):
 
 class user_action(object):
 	"""docstring for user_manipulation"""
-	def __init__(self, request):
+	def __init__(self, request, profile_id=None):
 		super(user_action, self).__init__()
 		self.request = request
 		if request.POST:
+			self.profile_id = profile_id
 			self.rp = request.POST
+			print('profile_id',self.profile_id)
 
 	def get_username(self):
 		if auth.get_user(self.request).username:
@@ -63,16 +65,27 @@ class user_action(object):
 		except AttributeError as a:
 			print(a)
 
-	def get_clientProfile(self):
-		return self.get_profile().client
+	def get_profileUserId(self):
 		try:
-			return self.get_profile().client
+			return Profile.objects.get(id=self.profile_id)
+		except Exception as e:
+			return None
+
+	def get_clientProfile(self):
+		try:
+			if self.profile_id != None:
+				return self.get_profileUseId().client
+			else:
+				return self.get_profile().client		
 		except AttributeError:
 			return None
 
 	def get_workProfile(self):
 		try:
-			return self.get_profile().worker
+			if self.profile_id != None:
+				return self.get_profileUserId().worker
+			else:
+				return self.get_profile().worker
 		except AttributeError:
 			return None
 

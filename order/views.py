@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import order
-from user.models import user_action
+from user.models import user_action,Profile,worker
 from .create_order import create_order_class
 from .forms import order_form
 from competition_system.models import offer
@@ -33,7 +33,17 @@ def order_pp(request,order_id):
 	return render(request,'order/order_pp.html', locals())
 
 def show_offer(request,order_id):
-	order_item = order.objects.get(id=order_id)	
-	every_offer = offer.objects.filter(order = order_item, status = True)
+	order_item = order.objects.get(id=order_id)
+	every_offer = offer.objects.filter(order = order_item)
+	if request.POST:
+		choose_worker = int(request.POST.get('choose worker'))
+		print(choose_worker)
+		for one in every_offer:
+			if one.id != choose_worker:
+				one.update(status = False)
+		# print(offer.objects.filter(id != choose_worker))
+
+
+					# one.update(status=False)
 	return render(request,'order/show_offer.html', locals())
 

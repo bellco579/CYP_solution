@@ -16,6 +16,6 @@ class offer(models.Model):
 		verbose_name = "offer"
 		verbose_name_plural = "offers"	
 	def __str__(self):	
-		return '%s,%s,%s,%s' % (self.tyme_work, self.time_type,self.work_cost,self.cost_type)
+		return '%s,%s,%s,%s' % (self.time_work, self.time_type,self.work_cost,self.cost_type)
 
 		

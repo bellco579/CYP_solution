@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+	<form action="" method="POST">{%csrf_token%}
+	{% for offer in every_offer %}
+		<input type="radio" name="choose worker" value="{{offer.id}}" id="{{offer.id}}">
+		<label for="{{offer.worker}}">{{offer.work_cost}}{{offer.cost_type}}</label>
+		<label for="{{offer.worker}}">{{offer.time_work}}{{offer.time_type}}</label><br>
+	{% endfor %}
+	<button method = "POST">send</button>
+	</form>
+{% endblock content %}

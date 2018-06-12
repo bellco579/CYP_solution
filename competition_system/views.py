@@ -12,9 +12,10 @@ def create_offer(request,order_id):
 			print(order_id)
 			order_for_offer = order.objects.get(id = order_id)
 			new_offer = offer.objects.create(worker = work_profile, order = order_for_offer)
-			form = offer_form(self.request.POST,instance = new_offer)
+			form = offer_form(request.POST,instance = new_offer)
 			if form.is_valid:
 				form.save()
+				return redirect('/')
 			else:
 				new_offer.delete()
 		else:
