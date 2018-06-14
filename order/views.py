@@ -13,11 +13,7 @@ def new_order(request):
 		if profile != None:
 			print(profile)
 			form = coc.save_form(profile)
-			# if form == True:
 			return redirect('/')
-			# else:
-			# 	form = coc.save_form(profile)
-			# 	error = 'your form is not valid'
 		else:
 			error = "you don't login"
 	else:
@@ -38,14 +34,12 @@ def show_offer(request,order_id):
 	if profile == order_item.client.profile:
 		every_offer = offer.objects.filter(order = order_item, status = True)
 		if request.POST:
-			choose_worker = int(request.POST.get('choose worker'))
-			print(choose_worker)
+			choose_worker = request.POST.get('choose worker')
 			for one in every_offer:
 				if one.id != choose_worker:
 					every_offer.filter(id = one.id).update(status = False)
 				else:
 					every_offer.filter(id = one.id).update(sign = True)
-			# print(offer.objects.filter(id != choose_worker))
 	else:
 		error = "you don't login"
 
