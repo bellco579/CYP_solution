@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 # from . import views
 urlpatterns = [
-	path('new_offer/(?<order_id>/$', views.create_offer, name = 'create_offer')
+	path('new_offer/(?<order_id>', views.create_offer, name = 'create_offer')
 	# path('every_order/$',views.every_order,name = 'every_order'),
 	# path('new/$',views.new_order,name = 'new_order'),
 	# path('show/(?<order_id>/$',views.show_offer,name = 'show_offer'),
