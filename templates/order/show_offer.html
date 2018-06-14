@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+{% if error %}
+	{{error}}
+{% else %}
 	<form action="" method="POST">{%csrf_token%}
 	{% for offer in every_offer %}
 		<input type="radio" name="choose worker" value="{{offer.id}}" id="{{offer.id}}">
@@ -8,4 +11,5 @@
 	{% endfor %}
 	<button method = "POST">send</button>
 	</form>
+{% endif %}
 {% endblock content %}

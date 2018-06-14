@@ -34,15 +34,20 @@ def order_pp(request,order_id):
 
 def show_offer(request,order_id):
 	order_item = order.objects.get(id=order_id)
-	every_offer = offer.objects.filter(order = order_item)
-	if request.POST:
-		choose_worker = int(request.POST.get('choose worker'))
-		print(choose_worker)
-		for one in every_offer:
-			if one.id != choose_worker:
-				one.update(status = False)
-		# print(offer.objects.filter(id != choose_worker))
-
+	profile = user_action(request).get_profile()
+	if profile == order_item.client.profile:
+		every_offer = offer.objects.filter(order = order_item, status = True)
+		if request.POST:
+			choose_worker = int(request.POST.get('choose worker'))
+			print(choose_worker)
+			for one in every_offer:
+				if one.id != choose_worker:
+					every_offer.filter(id = one.id).update(status = False)
+				else:
+					every_offer.filter(id = one.id).update(sign = True)
+			# print(offer.objects.filter(id != choose_worker))
+	else:
+		error = "you don't login"
 
 					# one.update(status=False)
 	return render(request,'order/show_offer.html', locals())

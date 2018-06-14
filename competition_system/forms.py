@@ -5,5 +5,5 @@ from .models import offer
 class offer_form(ModelForm):
     class Meta:
         model = offer
-        exclude = ['worker','status','order',]
+        exclude = ['worker','status','order','sign',]
         # fields = ['price', 'many']

@@ -12,6 +12,7 @@ class offer(models.Model):
 	status = models.BooleanField(default = True)
 	order = models.ForeignKey(order, on_delete = True, default = None, null = True, blank = True)
 	worker = models.ForeignKey(worker, on_delete = True, default = None, null = True, blank = True)
+	sign = models.BooleanField(default=False) 
 	class Meta:
 		verbose_name = "offer"
 		verbose_name_plural = "offers"	

@@ -13,7 +13,7 @@ class order(models.Model):
 		verbose_name_plural = "orders"
 	
 	def __str__(self):
-		return '%s' % (self.name)
+		return '%s, %s' % (self.name, self.client)
 	
 class competition(models.Model):
 	order = models.ForeignKey(order, on_delete = True)
