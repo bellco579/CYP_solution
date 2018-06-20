@@ -1,5 +1,17 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand" href="{% url "home" %}">BellcoShop</a>
-  <a href="{% url "new_order" %}">create order</a>
-  <a href="{% url "every_order" %}">every order</a>
+<a class="navbar-brand" href="{% url "home" %}">BellcoShop</a>
+<div class="content ">
+	<row>
+		<div class="col">
+			{% if username %}
+				<a href="{% url "new_order" %}">create order</a>
+				<a href="{% url "every_order" %}">every order</a>
+			{% else %}
+				<a href="{% url 'login' %}">login</a>
+				|
+				<a href="{% url 'register' %}">register</a>
+			{% endif %}			
+		</div>
+	</row>
+</div>
 </nav>
