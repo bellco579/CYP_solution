@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="{% url 'show_offer' order_item.id %}">show_offer</a>   
-<a href="{% url 'create_offer' order_item.id %}">offer yourself servise</a> 
+{% if username %}
+	{% if client_profile == order_item.client %}
+		<a href="{% url 'show_offer' order_item.id %}">show_offer</a>   
+	{% endif %}
+	<a href="{% url 'create_offer' order_item.id %}">offer yourself servise</a> 
+{% else %}
+you don't login
+{% endif %}
+
 {% endblock content %}

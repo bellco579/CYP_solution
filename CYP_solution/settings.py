@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'authentication',
     'main',
     'competition_system',
-    
+    'front_end_scripts'
+
 ]
 
 MIDDLEWARE = [
@@ -70,9 +71,17 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'front_end_scripts.user_and_profiles.user_and_profile',
+                'front_end_scripts.header_seting.header_config',
             ],
         },
     },
+]
+TEMPLATETAGS = [
+{
+    'DIRS': ['D:/project/python/django/CYP_solution/templatetags'],
+}
 ]
 
 WSGI_APPLICATION = 'CYP_solution.wsgi.application'

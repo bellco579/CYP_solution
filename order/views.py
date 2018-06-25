@@ -41,7 +41,7 @@ def show_offer(request,order_id):
 				else:
 					every_offer.filter(id = one.id).update(sign = True)
 	else:
-		error = "you don't login"
+		error = True
 
 					# one.update(status=False)
 	return render(request,'order/show_offer.html', locals())
