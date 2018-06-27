@@ -3,13 +3,11 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib import auth
-from locals.models import lenguage
-# from django.core.exceptions import AttributeError
 from quality_data.models import category
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    lenguage = models.Foreingkey(lenguage,on_delete = True,null=True, blank = True)
+    # lenguage = models.Foreingkey(lenguage,on_delete = True,null=True, blank = True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     def __str__(self):
