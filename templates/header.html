@@ -5,8 +5,9 @@
 		<row>
 			<div class="col">
 				{% if username %}
-				{{user_login}}
-				{% for item in user_login %}
+				{# {{header_config_if_login}} #}
+				{% for item in header_config_if_login %}
+				{{item["server_name"]}}
 				<h1>{{item}}</h1><br>
 				{% url item.server_name as item_url %}
 				{% if item_url != request.path %}
