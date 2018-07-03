@@ -1,17 +1,18 @@
 {% load to_spacce %}
 {% load range_filter %}
-<nav class="navbar navbar-light bg-light justify-content-between">
+<nav class="navbar navbar-dark bg-primary justify-content-between">
 	<a class="navbar-brand" href="{% url "home" %}">BellcoShop</a>
-	<div class="content ">
-		<row>
-			<div class="col">
-				{% for item in header_config %}	
-				{% url item.server_name as item_url %}
-				{% if item_url != request.path %}
-				<a href="{{item_url}}" >{{item.view_name}}</a> 					
-				{% endif %}		
-				{% endfor %}					
-			</div>
-		</row>
+	<div class="conteiner">
+				<ul class=" nav nav-pills">
+					{% for item in header_config %}	
+					{% url item.server_name as item_url %}
+					{% if item_url != request.path %}
+					<li class="nav-item active ">
+						<a href="{{item_url}}" class="navbar-brand" >{{item.view_name}}</a>
+					</li>
+					{% endif %}		
+					{% endfor %}					
+					
+				</ul>
 	</div>
 </nav>

@@ -4,11 +4,11 @@ from user.models import user_action
 def header_config(request):
 	config = []
 	if user_action(request).get_username():
-		server_name = ["new_order","every_order","logout"]
-		view_name = ["сделать заказ","все заказы","выйти"]
+		server_name = ["new_order","every_order","logout",]
+		view_name = ["сделать заказ","все заказы","выйти",]
 	else:
-		server_name = ["login","regiter",]
-		view_name = ["ввзод","регистрация",]
+		server_name = ["login","register",]
+		view_name = ["вход","регистрация",]
 
 	for i in range(len(server_name)):
 		config.append({
