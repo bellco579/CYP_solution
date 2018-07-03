@@ -1,56 +1,17 @@
 {% load to_spacce %}
+{% load range_filter %}
 <nav class="navbar navbar-light bg-light justify-content-between">
 	<a class="navbar-brand" href="{% url "home" %}">BellcoShop</a>
 	<div class="content ">
 		<row>
 			<div class="col">
-				{% if username %}
-				{# {{header_config_if_login}} #}
-				{% for item in header_config_if_login %}
-				{{item["server_name"]}}
-				<h1>{{item}}</h1><br>
+				{% for item in header_config %}	
 				{% url item.server_name as item_url %}
 				{% if item_url != request.path %}
-				<a href="item_url" >{{item.view_name.rus}}</a> 					
+				<a href="{{item_url}}" >{{item.view_name}}</a> 					
 				{% endif %}		
 				{% endfor %}					
-
-				{% else %}
-
-				{% for item in user_logout %}					
-				{% url item as item_url %}
-				{% if item_url != request.path %}
-				<a href="{% url item %}" >{{item | to_spacce}}</a> 					
-				{% endif %}		
-				{% endfor %}
-
-				{% endif %}
-<!--
-				{% if username  %}
-
-				{% url "new_order" as new_order %}
-				{% if new_order != request.path %}
-				<a href="{% url "new_order" %}" >create order</a> 					
-				{% endif %}
-
-				{% url "every_order" as every_order %}
-				{% if every_order != request.path %}
-				<a href="{% url "every_order" %}">every order</a>				
-				{% endif %}
-
-				{% else %}
-				{% url "login" as login %}
-				{% if login != request.path %}
-				<a href="{% url 'login' %}">login</a>
-				{% endif %}
-
-				{% url "register" as register %}
-				{% if regiter != request.path %}
-				<a href="{% url 'register' %}">register</a>
-				{% endif %}			
-				{% endif %}
-			-->
-		</div>
-	</row>
-</div>
+			</div>
+		</row>
+	</div>
 </nav>
